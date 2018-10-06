@@ -66,3 +66,7 @@ function test_input($data) {
 }
 ?>
 ```
+PHP Database Connection Error & Query Error
+```php
+mysqli_connect_error(); / mysqli_error($conn)
+```
