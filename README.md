@@ -70,3 +70,31 @@ PHP Database Connection Error & Query Error
 ```php
 mysqli_connect_error(); / mysqli_error($conn)
 ```
+
+Upload a File With PHP
+
+```php
+    <form id="form_request_file" method="post" action="index.php" enctype="multipart/form-data">
+            <table align="center" width="525" border="0">
+
+               <label for="uploaded" class="control-label col-sm-2">Upload File</label>
+                <input id="uploaded"  name="uploaded" type="file"/>
+<input value="Submit" name="submit" type="submit"/>
+    </form>
+
+<?php
+    if(isset($_POST['submit'])){
+     if(isset($_FILES['uploaded'])){
+        $path = "uploaded_docs/";  
+        $file_name = basename( $_FILES['uploaded']['name']);
+        $target = $path . $file_name ;      
+    if(move_uploaded_file($_FILES["uploaded"]["tmp_name"], $target)){ 
+            echo $file_name." was uploaded";
+    }else{
+            echo "Could not upload";
+    }
+    }
+?>
+```
+
+
