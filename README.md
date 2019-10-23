@@ -124,4 +124,20 @@ echo "$file_contents";
 ?>
 ```
 
+##PDO
 
+//Error 
+`        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        try
+        {
+            $query = "INSERT INTO clients SET ACID = ?, ClientName = ?, Category = ?, City = ?, Pincode = ?, Rating = ?, Industry = ?, AccountManager = ?, Website = ?, ClientAddress = ?, Status = ?, CreatedBy = ?, Createdon = ?";
+
+            $insertData = $this->conn->prepare($query);
+            $insertData->execute([$this->AdminCompany, ucwords($this->validate($_POST['clientname'])), $this->validate($_POST['category']), $this->validate($_POST['city']), $this->validate($_POST['pincode']), $this->validate($_POST['clientrating']), $this->validate($industry), $this->validate($accountmanager), $this->validate($website), $this->validate($_POST['clientaddress']), $this->validate($_POST['status']), $this->Admin, date('Y-m-d H:i:s')]);
+
+            return 'success';
+
+        }catch(PDOException $exception){
+            return "PDO error :" . $exception->getMessage();
+        }`
